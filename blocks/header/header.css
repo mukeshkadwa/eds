@@ -1,11 +1,10 @@
 /* header and nav layout */
 header .nav-wrapper {
-  background-color: var(--background-color);
+  background-color: var(--background-color-black);
   width: 100%;
   z-index: 2;
   position: fixed;
 }
-
 header nav {
   box-sizing: border-box;
   display: grid;
@@ -171,6 +170,7 @@ header nav .nav-sections ul {
   list-style: none;
   padding-left: 0;
   font-size: var(--body-font-size-s);
+  justify-content: end;
 }
 
 header nav .nav-sections ul > li {
@@ -231,11 +231,13 @@ header nav .nav-sections ul > li > ul > li {
   header nav .nav-sections .default-content-wrapper > ul > li {
     flex: 0 1 auto;
     position: relative;
+    color: #ffffff;
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li > ul {
     display: none;
     position: relative;
+    color: #000000;
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > ul {

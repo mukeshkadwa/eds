@@ -1,0 +1,66 @@
+:root {
+    --bg1: url(/../../images/bg-body.jpg);
+}
+
+.hero-banner {
+    background: var(--bg1) center/cover no-repeat #000000;
+}
+
+.hero-banner > .container {
+    height: 400px; /* Adjustable height matching image proportions */
+     /* Replace with actual shuttle image base64 or URL */
+    display: flex;
+    align-items: center;
+    padding: 0 60px;
+    position: relative;
+}
+
+
+.hero-banner-content {
+    max-width: 500px;
+    z-index: 1;
+    position: relative;
+}
+
+.hero-banner h1 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: #4da6ff;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    letter-spacing: 1px;
+}
+
+.hero-banner h1 + p {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.9);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+    margin-bottom: 0.5rem;
+    width: 50%;
+}
+
+.bottom-bar {
+    background: lightslategray;
+    padding: 20px 0px;
+    font-size: 2.5rem;
+    color: rgba(255,255,255,0.8);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-family: PTSerif-Caption;
+    text-align: center;
+}
+.bottom-bar  p{
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .hero-banner {
+        height: 300px;
+        padding: 0 30px;
+    }
+    .hero-banner h1 {
+        font-size: 2rem;
+    }
+    .bottom-bar {
+        padding: 15px 30px;
+    }
+}

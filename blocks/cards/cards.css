@@ -1,27 +1,115 @@
-.cards > ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
-  gap: 24px;
+/* Cards Container */
+.cards {
+    width: 100%;
+    padding: 2rem 0;
 }
 
-.cards > ul > li {
-  border: 1px solid #dadada;
-  background-color: var(--background-color);
+.cards .container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
 }
 
-.cards .cards-card-body {
-  margin: 16px;
+/* Card Items */
+.card-item {
+    flex: 1 1 calc(25% - 1.5rem);
+    min-width: 200px;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
-.cards .cards-card-image {
-  line-height: 0;
+.card-item:hover {
+    transform: translateY(-4px);
 }
 
-.cards > ul > li img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
+/* Card Image */
+
+.card-image img {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+/* Card Heading */
+.card-heading {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 1rem 0;
+    color: #333333;
+    line-height: 1.4;
+    font-style: italic;
+    text-align: center;
+    font-family: PTSerif-Caption
+}
+
+/* Card Description */
+.card-description {
+    font-size: 0.95rem;
+    color: #666666;
+    margin: 0 0 1rem 0;
+    line-height: 1.6;
+    flex-grow: 1;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .cards .container {
+        gap: 1.5rem;
+    }
+
+    .card-item {
+        flex: 1 1 calc(33.333% - 1rem);
+    }
+}
+
+@media (max-width: 768px) {
+    .cards .container {
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+
+    .card-item {
+        flex: 1 1 calc(50% - 0.5rem);
+    }
+
+    .card-heading {
+        font-size: 1.1rem;
+        margin: 0.75rem;
+    }
+
+    .card-description {
+        font-size: 0.9rem;
+        margin: 0 0.75rem 0.75rem 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cards .container {
+        gap: 0.75rem;
+        padding: 0 0.75rem;
+    }
+
+    .card-item {
+        flex: 1 1 100%;
+    }
+
+    .card-image {
+        height: 150px;
+    }
+
+    .card-heading {
+        font-size: 1rem;
+        margin: 0.5rem;
+    }
+
+    .card-description {
+        font-size: 0.85rem;
+        margin: 0 0.5rem 0.5rem 0.5rem;
+    }
 }

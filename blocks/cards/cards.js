@@ -1,17 +1,47 @@
-import { createOptimizedPicture } from '../../scripts/aem.js';
+function renderCards(cmp) {
+    if (!cmp) return;
 
-export default function decorate(block) {
-  /* change to ul, li */
-  const ul = document.createElement('ul');
-  [...block.children].forEach((row) => {
-    const li = document.createElement('li');
-    while (row.firstElementChild) li.append(row.firstElementChild);
-    [...li.children].forEach((div) => {
-      if (div.children.length === 1 && div.querySelector('picture')) div.className = 'cards-card-image';
-      else div.className = 'cards-card-body';
+    // Create a single container for all card-items
+    var container = document.createElement('div');
+    container.className = 'container';
+
+    // Get all card-items
+    var cardItems = Array.from(cmp.querySelectorAll('.cards > div'));
+    
+
+    cardItems.forEach(function(cardItem) {
+        var children = Array.from(cardItem.children);
+        cardItem.className = 'card-item';
+
+        //  Image div
+        if (children[0]) {
+            children[0].className += ' card-image';
+        }
+
+        //  Convert second div → h3
+        if (children[1]) {
+            var headingText = children[1].textContent;
+            var heading = document.createElement('h3');
+            heading.className = 'card-heading';
+            heading.textContent = headingText;
+            cardItem.replaceChild(heading, children[1]);
+        }
+
+        //  Convert third div → paragraph
+        if (children[2]) {
+            var descText = children[2].textContent;
+            var paragraph = document.createElement('p');
+            paragraph.className = 'card-description';
+            paragraph.textContent = descText;
+            cardItem.replaceChild(paragraph, children[2]);
+        }
+
+        // Move the processed card-item into the container
+        container.appendChild(cardItem);
     });
-    ul.append(li);
-  });
-  ul.querySelectorAll('picture > img').forEach((img) => img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])));
-  block.replaceChildren(ul);
+
+    // Append the container to the main .cards element
+    cmp.appendChild(container);
 }
+
+export default renderCards;
